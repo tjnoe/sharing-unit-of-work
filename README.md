@@ -13,18 +13,18 @@ Click Manage Records to add or edit any Team Member Sharing records.
 
 Create an new SharingUnitOfWork instance:
 ```
-		SharingUnitOfWork uow = new SharingUnitOfWork();
+SharingUnitOfWork uow = new SharingUnitOfWork();
 ```
 Use the add and remove methods to store the AccountTeamMembers and
 OpportunityTeamMembers to be inserted or removed:
 ```
-		uow.addAccountTeamMember(userId, accountId, role);
-		uow.removeAccountTeamMember(userId, accountId);
-		uow.addOpportunityTeamMember(userId, opportunityId, role);
-		uow.removeOpportunityTeamMember(userId, opportunityId);
+uow.addAccountTeamMember(userId, accountId, role);
+uow.removeAccountTeamMember(userId, accountId);
+uow.addOpportunityTeamMember(userId, opportunityId, role);
+uow.removeOpportunityTeamMember(userId, opportunityId);
 ```
 Once all potential team member transactions have been stored,
 use the commitChanges method to insert/remove team members
 ```
-		uow.commitChanges();
+uow.commitChanges();
 ```
