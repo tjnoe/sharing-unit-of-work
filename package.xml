@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>SharingUnitOfWork</members>
+        <members>SharingUnitOfWorkTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Team_Member_Sharing__mdt.AccountAccessLevel__c</members>
+        <members>Team_Member_Sharing__mdt.CaseAccessLevel__c</members>
+        <members>Team_Member_Sharing__mdt.ContactAccessLevel__c</members>
+        <members>Team_Member_Sharing__mdt.OpportunityAccessLevel__c</members>
+        <members>Team_Member_Sharing__mdt.Role__c</members>
+        <members>Team_Member_Sharing__mdt.Team_Type__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Team_Member_Sharing.TEST_EDIT_ONLY</members>
+        <members>Team_Member_Sharing.TEST_EDIT_ONLY_OPP</members>
+        <members>Team_Member_Sharing.TEST_READ_ONLY</members>
+        <members>Team_Member_Sharing.TEST_READ_ONLY_OPP</members>
+        <name>CustomMetadata</name>
+    </types>
+    <types>
+        <members>Team_Member_Sharing__mdt</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Team_Member_Sharing__mdt-Team Member Sharing Layout</members>
+        <name>Layout</name>
+    </types>
+    <version>42.0</version>
+</Package>
