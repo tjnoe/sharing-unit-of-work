@@ -177,7 +177,7 @@ public without sharing class SharingUnitOfWork {
                 insert atmsToInsert;
             }
             
-            List<AccountShare> acctSharesToDelete = buildTeamMemberDeleteList('Account', accountTeamMemberDeleteMap, accountIdsForDeletes);
+            List<AccountTeamMember> acctSharesToDelete = buildTeamMemberDeleteList('Account', accountTeamMemberDeleteMap, accountIdsForDeletes);
             if (!acctSharesToDelete.isEmpty()) {
                 delete acctSharesToDelete;
             }
@@ -187,7 +187,7 @@ public without sharing class SharingUnitOfWork {
                 insert otmsToInsert;
             }
             
-            List<OpportunityShare> oppSharesToDelete = buildTeamMemberDeleteList('Opportunity', oppTeamMemberDeleteMap, oppIdsForDeletes);
+            List<OpportunityTeamMember> oppSharesToDelete = buildTeamMemberDeleteList('Opportunity', oppTeamMemberDeleteMap, oppIdsForDeletes);
             if (!oppSharesToDelete.isEmpty()) {
                 delete oppSharesToDelete;
             }
