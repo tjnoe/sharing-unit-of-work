@@ -93,17 +93,17 @@ public without sharing class SharingUnitOfWork {
         List<sObject> tmDeleteList = new List<sObject>();
         if (!tmDeleteMap.isEmpty()) {
             if (teamType == 'Account') {
-                List<AccountShare> accountShares = [SELECT Id, AccountId, UserOrGroupId FROM AccountShare WHERE AccountId IN :objectIdsForDeletes AND RowCause IN ('Manual', 'Team')];
-                for(AccountShare share : accountShares) {
-                    if (tmDeleteMap.containsKey(share.AccountId + '-' + share.UserOrGroupId)) {
-                        tmDeleteList.add(share);
+                List<AccountTeamMember> accountTeamMembers = [SELECT Id, AccountId, UserId FROM AccountTeamMember WHERE AccountId IN :objectIdsForDeletes];
+                for(AccountTeamMember atm : accountTeamMembers) {
+                    if (tmDeleteMap.containsKey(atm.AccountId + '-' + atm.UserId)) {
+                        tmDeleteList.add(atm);
                     }
                 }
             } else if (teamType == 'Opportunity') {
-                List<OpportunityShare> opportunityShares = [SELECT Id, OpportunityId, UserOrGroupId FROM OpportunityShare WHERE OpportunityId IN :objectIdsForDeletes AND RowCause IN ('Manual', 'Team')];
-                for(OpportunityShare share : opportunityShares) {
-                    if (tmDeleteMap.containsKey(share.OpportunityId + '-' + share.UserOrGroupId)) {
-                        tmDeleteList.add(share);
+                List<OpportunityTeamMember> opportunityTeamMembers = [SELECT Id, OpportunityId, UserId FROM OpportunityTeamMember WHERE OpportunityId IN :objectIdsForDeletes];
+                for(OpportunityTeamMember otm : opportunityTeamMembers) {
+                    if (tmDeleteMap.containsKey(otm.OpportunityId + '-' + otm.UserId)) {
+                        tmDeleteList.add(otm);
                     }
                 }
             }
@@ -177,7 +177,7 @@ public without sharing class SharingUnitOfWork {
                 insert atmsToInsert;
             }
             
-            List<AccountTeamMember> acctSharesToDelete = buildTeamMemberDeleteList('Account', accountTeamMemberDeleteMap, accountIdsForDeletes);
+            List<AccountShare> acctSharesToDelete = buildTeamMemberDeleteList('Account', accountTeamMemberDeleteMap, accountIdsForDeletes);
             if (!acctSharesToDelete.isEmpty()) {
                 delete acctSharesToDelete;
             }
@@ -187,7 +187,7 @@ public without sharing class SharingUnitOfWork {
                 insert otmsToInsert;
             }
             
-            List<OpportunityTeamMember> oppSharesToDelete = buildTeamMemberDeleteList('Opportunity', oppTeamMemberDeleteMap, oppIdsForDeletes);
+            List<OpportunityShare> oppSharesToDelete = buildTeamMemberDeleteList('Opportunity', oppTeamMemberDeleteMap, oppIdsForDeletes);
             if (!oppSharesToDelete.isEmpty()) {
                 delete oppSharesToDelete;
             }
